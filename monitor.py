@@ -16,6 +16,8 @@ if camera is None:
     print('请先连接摄像头')
     exit()
 
+# camera = cv2.VideoCapture('vtest.avi')  # 调取视频
+
 bs = cv2.createBackgroundSubtractorKNN(detectShadows=True)
 
 fps = 5 # 帧率
@@ -53,7 +55,7 @@ while True:
                 cv2.rectangle(cur_frame, (x, y), (x + w, y + h), (255, 255, 0), 2)
         if flag:
             currentTime = int(time.time())
-            if currentTime - pre_time > 5:
+            if currentTime - pre_time > 2:
                 pre_time = currentTime
                 print("记入日志ing")
                 currentImage = "./images/" + randomString() + ".jpg"
